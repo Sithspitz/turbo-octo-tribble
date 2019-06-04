@@ -18,13 +18,19 @@ training_data2 <- as.matrix(training_data)
 data_names <- training_data
 
 # For loop testing...
-my_list <- vector()
+correlations <- vector()
 for (i in 1:nrow(training_data2)) {
   print(rownames(data_names[i, ]))
   row <- training_data2[i, ]
   corr_test <- cor.test(rorc_training_data2, row, method = "pearson")
   if(corr_test$p.value <=0.05) {
-    my_list[length(my_list)+1] <- rownames(data_names[i, ])
+    correlations[length(correlations)+1] <- rownames(data_names[i, ])
+    correlations[length(correlations)+1] <- corr_test$p.value
     }
 }
+
+sig_corr <- as.data.frame(correlations)
+
+setwd("~/DataShare/rorc_correlations/Output")
+write.csv(sig_corr, "test_data_sig_rorc_correlations.csv", row.names = F)
 
