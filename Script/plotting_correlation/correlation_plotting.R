@@ -2,6 +2,7 @@
 ## This example uses the total_mt_rsem interesting_genes_to_plot ##
 
 library(ggpubr)
+library(dplyr)
 setwd("H:/My Documents/BEAR Datashare/rorc_correlations/correlation_plots/total_mt_zscore/")
 
 # Import
